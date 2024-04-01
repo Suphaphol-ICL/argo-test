@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: Burp-Scan-
+  generateName: app-burp-scn-
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -9,14 +9,14 @@ spec:
   template:
     spec:
       containers:
-      - name: Burp-Scan
+      - name: burp-scan
         image: curlimages/curl
         command:
           - "curl"
           - "-X"
           - "POST"
           - "--data-urlencode"
-          - "payload={\"channel\": \"#somechannel\", \"username\": \"hello\", \"text\": \"App Sync succeeded\", \"icon_emoji\": \":ghost:\"}"
+          - "payload={\"site_id\": \"123\"}"
           - "http://192.168.137.9:9000/"
       restartPolicy: Never
   backoffLimit: 2
