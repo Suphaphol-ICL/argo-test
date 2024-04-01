@@ -18,11 +18,11 @@ spec:
         name: guestbook-ui
         ports:
         - containerPort: 80
-    - name: wait
-      wait:
-        for: deployment
-        condition: "True"
-    - name: curl
+  - name: wait
+    wait:
+      for: deployment
+      condition: "True"
+  - name: curl
       container:
         image: alpine
         command: ["curl", "-X", "GET", "http://192.168.137.9:9000"]
