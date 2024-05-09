@@ -9,20 +9,23 @@ spec:
   template:
     spec:
       containers:
+      - name: burp-scan-update-site
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "--data-urlencode"
+          - "payload={\"site_id\": \"123\"}"
+          - "http://192.168.137.9:9000/burp-scan-update-site"
       - name: burp-scan
         image: curlimages/curl
         command:
-          - 'curl'
-          - '-X'
-          - 'POST'
-          - '--header='
-          - 'Authorization: i1AbNyHDcgMPNtOhFL4MiPiTWoc07fuy'
-          - '--header='
-          - 'Content-Type: application/json'
-          - '--header='
-          - 'User-Agent: insomnia/8.6.1'
-          - '--data'
-          - 'payload={"query":"mutation CreateScheduleItem($input: CreateScheduleItemInput!) {\n  create_schedule_item(input: $input) {\n    schedule_item {\n      id\n    }\n  }\n}","operationName":"CreateScheduleItem","variables":"{\n\t\"input\": {\n\t\t\"site_id\": \"10\",\n\t\t\"schedule\": {},\n\t\t\"scan_configuration_ids\": [],\n\t\t\"verbose_debug\": null\n\t}\n}"}'
-          - 'http://192.168.137.9:9000/graphql/v1'
+          - "curl"
+          - "-X"
+          - "POST"
+          - "--data-urlencode"
+          - "payload={\"site_id\": \"123456\"}"
+          - "http://192.168.137.9:9000/burp-scan"
       restartPolicy: Never
   backoffLimit: 2
