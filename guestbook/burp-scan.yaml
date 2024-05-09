@@ -9,14 +9,23 @@ spec:
   template:
     spec:
       containers:
+      - name: burp-scan-update-site
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "--data"
+          - "{\"site_id\": \"123\"}"
+          - "http://192.168.137.9:9000/burp-scan-update-site"
       - name: burp-scan
         image: curlimages/curl
         command:
           - "curl"
           - "-X"
           - "POST"
-          - "--data-urlencode"
-          - "payload={\"site_id\": \"123\"}"
-          - "http://192.168.137.9:9000/"
+          - "--data"
+          - "{\"site_id\": \"123456\"}"
+          - "http://192.168.137.9:9000/burp-scan"
       restartPolicy: Never
   backoffLimit: 2
