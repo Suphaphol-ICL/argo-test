@@ -18,10 +18,6 @@ spec:
           - "--data-urlencode"
           - "payload={\"site_id\": \"123\"}"
           - "http://192.168.137.9:9000/burp-scan-update-site"
-      restartPolicy: Never
-      containers:
-      - name: burp-scan
-        image: curlimages/curl
         command:
           - "curl"
           - "-X"
@@ -29,4 +25,5 @@ spec:
           - "--data-urlencode"
           - "payload={\"site_id\": \"123456\"}"
           - "http://192.168.137.9:9000/burp-scan"
+      restartPolicy: Never
   backoffLimit: 2
