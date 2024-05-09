@@ -9,21 +9,6 @@ spec:
   template:
     spec:
       containers:
-      - name: burp-scan-update-site
-        image: curlimages/curl
-        command:
-          - 'curl'
-          - '-X'
-          - 'POST'
-          - '--header='
-          - 'Authorization: i1AbNyHDcgMPNtOhFL4MiPiTWoc07fuy'
-          - '--header='
-          - 'Content-Type: application/json'
-          - '--header='
-          - 'User-Agent: insomnia/8.6.1'
-          - '--data'
-          - 'payload={"query":"mutation UpdateSiteScopeV2($input: UpdateSiteScopeV2Input!) {\n  update_site_scope_v2(input: $input) {\n    site {\n      id\n      name\n      parent_id\n      ephemeral\n      scope_v2 {\n        start_urls\n        in_scope_url_prefixes\n        out_of_scope_url_prefixes\n        protocol_options\n      }\n      scan_configurations {\n        id\n      }\n      extensions {\n        id\n      }\n      application_logins {\n        login_credentials {\n          id\n          label\n          username\n          password\n        }\n        recorded_logins {\n          id\n          label\n          script\n        }\n      }\n      email_recipients {\n        id\n        email\n      }\n      agent_pool {\n        id\n        name\n        agents {\n          id\n          name\n        }\n      }\n      slack_channels {\n        id\n        name\n      }\n      settings {\n          request_headers {\n              id\n              name\n              value\n              scope_prefix\n          }\n          request_cookies {\n              id\n              name\n              value\n              scope_prefix\n          }\n      }\n\n    }\n  }\n}","operationName":"UpdateSiteScopeV2","variables":"{\n\t\"input\": {\n\t\t\"site_id\": \"10\",\n\t\t\"scope_v2\": {\n\t\t\t\"start_urls\": [\n\t\t\t\t\"https://ks-gateway-website-external.uat-dmz.kasikornsecurities.com/getODDCashAccount?message=Pi1gFfCA7bZrubcAjps5K-szL0_VDkitrNNBXnQQ2-1KXRm31y8GXmu54W1D89C3tfqG31wNWFLdwCGu8tRzRhebq7mS81VYoOihJhBwq0v4EDHIz-OML-EYcGtyI4Ln0ZisaA6gnY5gUlpMVepTK4gloVY_9_y5_oinr-KlxcU7mGQygvazPvuj4Gix9Ia6nMPp9dfZRQRLLAbKrhnsBCi-heIWXs7pvGAQzWPBIAytrrYt9S7L70nAHj3TDkzVN9YYtvJ_oa1BaVfjDOfp2ocLIeRLHySbeCvdHnVjPMPFa7ikUhUuIShW8fSe2aGHFy-aSq2TKFoBv44AbGHtyfZL0xYR6e4FWA_BFNrkaIk&pretoken=MjAyNDA1MDIxNjA2MTE&client=wXibUb44i1DZrqRdNOJ_ZA&theme=dark&back_page=ipY1F07THtsDMh9_UjN1xtfIddivvNH2AbvZj-W5pFXJgtlHan9UvGcMfACpwa-A_6xK1jPp9Rrl1iav1Y85BQ+1234\"\n\t\t\t],\n\t\t\t\"in_scope_url_prefixes\": [],\n\t\t\t\"out_of_scope_url_prefixes\": [],\n\t\t\t\"protocol_options\": \"USE_HTTP_AND_HTTPS\"\n\t\t}\n\t}\n}"}'
-          - 'http://192.168.137.9:9000/graphql/v1'
       - name: burp-scan
         image: curlimages/curl
         command:
